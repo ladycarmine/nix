@@ -67,6 +67,7 @@
   };
 
   home-manager.users.carmine = {
+    home.file.".gitconfig".source = ./config/.gitconfig;
     home.file.".zshrc".source = ./config/.zshrc;
     home.file.".config/ohmyposh/ohmyposh.toml".source = ./config/ohmyposh.toml;
     home.stateVersion = "25.05";
