@@ -1,0 +1,32 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    type = 'path'
+    style = 'plain'
+    background = 'transparent'
+    foreground = '#8C8C8C'
+    
+    [blocks.segments.properties]
+      style = 'full'
+
+  [[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+    [[blocks.segments]]
+      type = 'text'
+      style = 'plain'
+      foreground = 'white'
+      backkground = 'transparent'
+      template = "❯"

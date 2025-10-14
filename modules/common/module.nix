@@ -53,16 +53,20 @@
     isNormalUser = true;
     description = "Carmine";
     extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       fastfetch
+      fzf
       nano
       neovim
+      oh-my-posh
       zsh
     ];
   };
 
   home-manager.users.carmine = {
-    home.file."config/test".source = ./config/test;
+    home.file.".zshrc".source = ./config/.zshrc;
+    home.file.".config/ohmyposh/ohmyposh.toml".source = ./config/ohmyposh.toml;
     home.stateVersion = "25.05";
   };
 
