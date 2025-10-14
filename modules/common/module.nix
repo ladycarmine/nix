@@ -59,6 +59,7 @@
 
   home-manager.users.carmine = {
     home.file."config/test".source = ./config/test;
+    home.stateVersion = "25.05";
   };
 
   # Environment Packages
