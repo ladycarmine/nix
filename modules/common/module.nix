@@ -21,6 +21,9 @@
   # NetworkManager
   networking.networkmanager.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
   # SSH
   services.openssh = {
     enable = true;

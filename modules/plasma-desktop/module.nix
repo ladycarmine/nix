@@ -9,5 +9,6 @@
     wayland.enable = true;
     settings.General.DisplayServer = "wayland";
   };
+  services.displayManager.defaultSession = "plasma";
 
 }

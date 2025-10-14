@@ -20,7 +20,9 @@
         modules = [
           ./modules/hostname/quasar.nix
           ./modules/common/module.nix
+          ./modules/common-ui/module.nix
           ./modules/hardware/hardware-configuration.nix
+          ./modules/plasma-desktop/module.nix
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
