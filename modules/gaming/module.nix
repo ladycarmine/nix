@@ -1,13 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
+  programs.steam.enable = true;
+
   users.users.carmine = {
     packages = with pkgs; [
-      blender
-      blockbench
-      gimp
-      krita
-      inkscape
+      prismlauncher
     ];
   };
 }
