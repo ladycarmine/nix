@@ -171,21 +171,6 @@ Install NixOS. Be advised that virtual machines must be booted in UEFI mode for 
 ```
 $ nixos-install --root /mnt
 ```
-| Module | Purpose |
-|--|--|
-| `art` | Creative software for drawing, modeling, and rendering |
-| `common` | Necessary packages and configurations, shared across all hosts  |
-| `common-ui` | Packages shared by all hosts which have a desktop environment  |
-| `dev` | IDE's and virtual machines |
-| `gaming` | Steam and Prism Launcher |
-| `hardware` | A copy of `hardware-configuration.nix`  |
-| `media` | Recording, encoding, and watching videos  |
-| `office` | Productivity software, such as LibreOffice and printer interfaces  |
-| `plasma-desktop` | KDE Plasma for desktop computers (smaller icons, more information)  |
-| `plasma-mobile` | KDE Plasma for laptops and other smaller devices (larger icons, touchscreen friendly)  |
-
-
-
 Unmount `/mnt`
 ```
 $ umount -R /mnt
