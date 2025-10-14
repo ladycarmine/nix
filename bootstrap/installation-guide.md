@@ -146,11 +146,11 @@ $ nano /mnt/etc/nixos/hardware-configuration.nix
 $ vim /mnt/etc/nixos/hardware-configuration.nix
 ```
 
-Add the following lines, ensuring there's no duplication. Save and exit
+Add the following lines, ensuring there's no duplication. Uncomment the home partition as needed. Save and exit
 ```
 boot.loader.grub.device = "/dev/disk/by-id/<ROOT DISK ID>";
 boot.initrd.luks.devices."luks_lvm".device = "/dev/disk/by-uuid/<ROOT PARTITION UUID>";
-boot.initrd.luks.devices."luks_home".device = "/dev/disk/by-uuid/<HOME PARTITION UUID>";
+# boot.initrd.luks.devices."luks_home".device = "/dev/disk/by-uuid/<HOME PARTITION UUID>";
 ```
 
 Open the default `configuration.nix` in a text editor
