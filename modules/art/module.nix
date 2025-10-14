@@ -6,8 +6,9 @@
       blender
       blockbench
       gimp
-      krita
       inkscape
+      krita
+      opentabletdriver
     ];
   };
 }
