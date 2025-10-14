@@ -4,6 +4,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   nix.settings.experimental-features = [ "nix-command" "flakes"];
   time.timeZone = "America/New_York";
+  nixpkgs.config.allowUnfree = true;
 
   # Bootloader (GRUB)
   boot.loader.grub = {
