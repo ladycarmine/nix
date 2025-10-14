@@ -13,6 +13,8 @@
   {
     nixosConfigurations = {
 
+      # The workstation configuration contains almost all modules,
+      # designed for a general-purpose, powerful desktop computer
       "workstation" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; }; 
@@ -26,6 +28,7 @@
           ./modules/gaming/module.nix
           ./modules/hardware/hardware-configuration.nix
           ./modules/media/module.nix
+          ./modules/office/module.nix
           ./modules/plasma-desktop/module.nix
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
