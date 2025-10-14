@@ -50,7 +50,7 @@ $ cryptsetup luksFormat -v -s 512 -h sha512 /dev/nvme1n1p1
 ```
 Ensure you choose an effective passphrase (6-8 words) and **keep it secure**
 
-Mount the disks (including home, when applicable)
+Open the disks (including home, when applicable)
 ```
 $ cryptsetup open /dev/nvme0n1p3 luks_lvm
 $ cryptsetup open /dev/nvme1n1p1 nixos-home
@@ -128,12 +128,29 @@ $ mount /dev/nvme0n1p1 /mnt/boot/efi
 Generate the default configuration files
 ```
 $ nixos-generate-config --root /mnt
+```
 
+Note the UUID of the root and (when applicable) home partitions
 ```
-Double check the `hardware-configuration.nix` to ensure that it doesn't contain anything pertaining to LUKS. This would cause conflicts later during decryption. Save any changes and exit
+$ lsblk -f
 ```
-# If you see a line like this, delete it
-boot.initrd.luks.devices."nixos-home".device = "/dev/disk/...";
+
+Note the ID of the disk that contains the `/boot` partition. For example, in this case, the ID is `nvme-Samsung_SSD_990_PRO_2TB_S73WNU0XB12209B`. If no such line exists, which is sometimes the case for virtual machines, use the kernel device name, such as `/dev/vda`.
+```
+$ ls -l /dev/disk/by-id/
+```
+
+Open `hardware-configuration.nix`
+```
+$ nano /mnt/etc/nixos/hardware-configuration.nix
+$ vim /mnt/etc/nixos/hardware-configuration.nix
+```
+
+Add the following lines, ensuring there's no duplication. Save and exit
+```
+boot.loader.grub.device = "/dev/disk/by-id/<ROOT DISK ID>";
+boot.initrd.luks.devices."luks_lvm".device = "/dev/disk/by-uuid/<ROOT PARTITION UUID>";
+boot.initrd.luks.devices."luks_home".device = "/dev/disk/by-uuid/<HOME PARTITION UUID>";
 ```
 
 Open the default `configuration.nix` in a text editor
@@ -146,53 +163,7 @@ Delete the contents of the file. This can be done quickly like so:
 Nano: Alt + \, Alt + T
 Vim: Esc, gg, dG
 ```
-Copy the full contents of [bootstrap.nix](configuration.nix) into the configuration.nix file. Save and exit
-
-## Bootloader
-Find the ID of the disk that contains the `/boot` partition
-```
-$ ls -l /dev/disk/by-id/
-```
-Find the line that looks something like this. In this case, the ID is `nvme-Samsung_SSD_990_PRO_2TB_S73WNU0XB12209B`. If no such line exists, which is sometimes the case for virtual machines, use the kernel device name, such as `/dev/vda`.
-```
-lrwxrwxrwx 1 root root 13 Oct 11 21:56 nvme-Samsung_SSD_990_PRO_2TB_S73WNU0XB12209B -> ../../nvme0n1
-```
-Reopen `configuration.nix`
-```
-$ nano /mnt/etc/nixos/configuration.nix
-$ vim /mnt/etc/nixos/configuration.nix
-```
-Copy the disk ID into the spot denoted with `<YOUR DISK ID>`. Save and exit
-```
-...
-# Edit this line to reflect the appropriate drive to install GRUB to
-device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_2TB_S73WNU0XB12209B";
-...
-```
-If you're using the kernel device name, replace the entire string
-```
-...
-# Edit this line to reflect the appropriate drive to install GRUB to
-device = "/dev/vda";
-...
-```
-Get the UUID of the root partition (the third partition of the root disk)
-```
-$ lsblk -f
-```
-Reopen `configuration.nix`
-```
-$ nano /mnt/etc/nixos/configuration.nix
-$ vim /mnt/etc/nixos/configuration.nix
-```
-Copy the UUID into the spot denoted with `<ROOT PARTITION UUID>`. Save and exit
-```
-# Edit this block to reflect the UUID of the root partition
-luks_root = {
-    device = "/dev/disk/by-uuid/3b818498-8d7f-4748-a816-7d2bf5562588";
-};
-```
-Repeat with the home partition, when applicable
+Copy the full contents of [bootstrap.nix](bootstrap.nix) into the configuration.nix file. Save and exit
 
 
 ## Installation
@@ -200,6 +171,21 @@ Install NixOS. Be advised that virtual machines must be booted in UEFI mode for 
 ```
 $ nixos-install --root /mnt
 ```
+| Module | Purpose |
+|--|--|
+| `art` | Creative software for drawing, modeling, and rendering |
+| `common` | Necessary packages and configurations, shared across all hosts  |
+| `common-ui` | Packages shared by all hosts which have a desktop environment  |
+| `dev` | IDE's and virtual machines |
+| `gaming` | Steam and Prism Launcher |
+| `hardware` | A copy of `hardware-configuration.nix`  |
+| `media` | Recording, encoding, and watching videos  |
+| `office` | Productivity software, such as LibreOffice and printer interfaces  |
+| `plasma-desktop` | KDE Plasma for desktop computers (smaller icons, more information)  |
+| `plasma-mobile` | KDE Plasma for laptops and other smaller devices (larger icons, touchscreen friendly)  |
+
+
+
 Unmount `/mnt`
 ```
 $ umount -R /mnt
