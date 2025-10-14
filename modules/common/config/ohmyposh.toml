@@ -5,7 +5,7 @@ final_space = true
 [upgrade]
   source = 'cdn'
   interval = '168h'
-  auto = false
+  auto = true
   notice = true
 
 [[blocks]]
