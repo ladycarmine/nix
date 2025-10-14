@@ -48,6 +48,9 @@
     pulse.enable = true;
   };
 
+  # Zshell
+  programs.zsh.enable = true;
+
   # Main User
   users.users.carmine = {
     isNormalUser = true;
@@ -60,7 +63,6 @@
       nano
       neovim
       oh-my-posh
-      zsh
     ];
   };
 
