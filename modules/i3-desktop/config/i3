@@ -63,15 +63,24 @@ set $wm_setting_key_right            Right
 
 
 # =========================== Hotkeys ===========================
-bindsym $mod+Return exec $wm_setting_app_terminal       # Launch Terminal
-bindsym $mod+$smod+Return exec $wm_setting_app_browser  # Launch Browser
-bindsym $mod+d exec $wm_setting_app_launcher            # Launch App Launcher
-bindsym $mod+r mode "resize"                            # Resize Mode
-bindsym $mod+f fullscreen toggle                        # Fullscreen
-bindsym $mod+$smod+f floating toggle                    # Toggle tiling/floating
-bindsym $mod+$smod+q kill                               # Kill Active Window
-bindsym $mod+$smod+r restart                            # Restart i3
-floating_modifier $mod                                  # Drag Window
+# Launch Terminal
+bindsym $mod+Return exec $wm_setting_app_terminal
+# Launch Browser
+bindsym $mod+$smod+Return exec $wm_setting_app_browser
+# Launch App Launcher
+bindsym $mod+d exec $wm_setting_app_launcher
+# Resize Mode
+bindsym $mod+r mode "resize"
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+# Toggle tiling/floating
+bindsym $mod+$smod+f floating toggle
+# Kill Active Window
+bindsym $mod+$smod+q kill
+# Restart i3
+bindsym $mod+$smod+r restart
+# Drag Window
+floating_modifier $mod
 
 # Switch to Workspace
 bindsym $mod+1 workspace $ws1
@@ -176,5 +185,7 @@ bar {
 
 
 # ============================ Misc =============================
-font $wm_setting_font                                    # Titlebar Font
-exec_always --no-startup-id $wm_setting_app_compositor   # Window Compositor
+# Titlebar Font
+font $wm_setting_font
+# Window Compositor
+exec_always --no-startup-id $wm_setting_app_compositor

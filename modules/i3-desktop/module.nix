@@ -8,8 +8,9 @@
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-        rofi
         i3status
+        picom
+        rofi
       ];
     };
   };
