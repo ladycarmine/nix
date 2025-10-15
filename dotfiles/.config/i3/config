@@ -43,20 +43,28 @@ set $wm_setting_key_right            Right
 # =========================== Hotkeys ===========================
 # Launch Terminal
 bindsym $mod+Return exec $wm_setting_app_terminal
+
 # Launch Browser
 bindsym $mod+$smod+Return exec $wm_setting_app_browser
+
 # Launch App Launcher
 bindsym $mod+d exec $wm_setting_app_launcher
+
 # Resize Mode
 bindsym $mod+r mode "resize"
+
 # Fullscreen
 bindsym $mod+f fullscreen toggle
+
 # Toggle tiling/floating
 bindsym $mod+$smod+f floating toggle
+
 # Kill Active Window
 bindsym $mod+$smod+q kill
+
 # Restart i3
 bindsym $mod+$smod+r restart
+
 # Drag Window
 floating_modifier $mod
 
@@ -143,7 +151,12 @@ client.background       $wm_color_background
 
 
 # ============================ Misc =============================
+
 # Titlebar Font
 font $wm_setting_font
+
 # Window Compositor
 exec_always --no-startup-id $wm_setting_app_compositor
+
+# Polybar
+exec_always --no-startup-id /home/carmine/.config/polybar/launch.sh

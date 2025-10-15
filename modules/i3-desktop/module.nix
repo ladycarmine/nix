@@ -18,6 +18,7 @@
   programs.i3lock.enable = true;
 
   home-manager.users.carmine = {
+    home.file.".config/polybar/config.ini".source = ../../dotfiles/.config/polybar/config.ini;
     home.file.".config/i3/config".source = ../../dotfiles/.config/i3/config;
     home.stateVersion = "25.05";
   };
