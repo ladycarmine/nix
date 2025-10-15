@@ -19,6 +19,7 @@
 
   home-manager.users.carmine = {
     home.file.".config/polybar/config.ini".source = ../../dotfiles/.config/polybar/config.ini;
+    home.file.".config/polybar/launch.sh".source = ../../dotfiles/.config/polybar/launch.sh;
     home.file.".config/i3/config".source = ../../dotfiles/.config/i3/config;
     home.stateVersion = "25.05";
   };
