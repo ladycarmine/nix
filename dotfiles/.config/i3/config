@@ -159,4 +159,4 @@ font $wm_setting_font
 exec_always --no-startup-id $wm_setting_app_compositor
 
 # Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id sh ~/.config/polybar/launch.sh
