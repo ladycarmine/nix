@@ -16,5 +16,10 @@
   services.displayManager.defaultSession = "none+i3";
   programs.i3lock.enable = true;
 
+  home-manager.users.carmine = {
+    home.file.".config/i3/config".source = "./config/i3";
+    home.stateVersion = "25.05";
+  };
+
 
 }
