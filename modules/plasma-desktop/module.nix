@@ -18,7 +18,7 @@
 
   users.users.carmine = {
     packages = with pkgs; [
-      rofi-wayland
+      rofi
       latte-dock
     ];
   };
