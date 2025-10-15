@@ -159,4 +159,4 @@ font $wm_setting_font
 exec_always --no-startup-id $wm_setting_app_compositor
 
 # Polybar
-exec_always --no-startup-id /home/carmine/.config/polybar/launch.sh
+exec --no-startup-id /home/carmine/.config/polybar/launch.sh
