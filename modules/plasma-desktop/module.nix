@@ -16,5 +16,12 @@
     kwalletmanager
   ];
 
+  users.users.carmine = {
+    packages = with pkgs; [
+      rofi-wayland
+      latte-dock
+    ];
+  };
+
 
 }
