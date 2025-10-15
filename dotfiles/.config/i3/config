@@ -4,7 +4,7 @@
 # Applications
 set $wm_setting_app_terminal         alacritty
 set $wm_setting_app_browser          chromium
-set $wm_setting_app_launcher         rofi
+set $wm_setting_app_launcher         rofi -show drun
 set $wm_setting_app_compositor       picom
 
 # Window Border Colors
