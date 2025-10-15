@@ -19,7 +19,6 @@
   users.users.carmine = {
     packages = with pkgs; [
       rofi
-      latte-dock
     ];
   };
 
