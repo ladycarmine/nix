@@ -27,9 +27,9 @@
           ./modules/dev/module.nix
           ./modules/gaming/module.nix
           ./modules/hardware/hardware-configuration.nix
+          ./modules/i3-desktop/module.nix
           ./modules/media/module.nix
           ./modules/office/module.nix
-          ./modules/plasma-desktop/module.nix
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
           }

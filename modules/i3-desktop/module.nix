@@ -1,0 +1,20 @@
+{ config, pkgs, lib, inputs, ... }:
+
+{
+  services.xserver = {
+    enable = true;
+    desktopManager.xterm.enable = false;
+
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        rofi
+        i3status
+      ];
+    };
+  };
+  services.displayManager.defaultSession = "none+i3";
+  programs.i3lock.enable = true;
+
+
+}
