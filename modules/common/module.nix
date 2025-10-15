@@ -5,6 +5,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes"];
   time.timeZone = "America/New_York";
   nixpkgs.config.allowUnfree = true;
+  home-manager.backupFileExtension = "backup";
 
   # Bootloader (GRUB)
   boot.loader.grub = {
